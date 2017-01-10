@@ -1,4 +1,4 @@
-class Chat::ActiveController < ApplicationController
+class Chat::ActiveController < BaseController
 	def index
 		if current_user.is_member
 			@sessions = Session.where("status = ? and user_from_id = ?", Constants::SESSION_STATUS_OPEN, current_user.id).order(updated_at: :desc)

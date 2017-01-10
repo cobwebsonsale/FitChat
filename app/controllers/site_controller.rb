@@ -1,6 +1,4 @@
-class SiteController < ApplicationController
-	before_action :authenticate_user!
-
+class SiteController < BaseController
 	def index
 	end
 end

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   	devise :database_authenticatable, :registerable,
            :rememberable, :validatable
 
+    has_many :sessions
     def get_user_type
       	if self.user_type == Constants::USER_TYPE_MEMBER
       		  return "Member"

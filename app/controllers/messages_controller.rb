@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class MessagesController < BaseController
 	def new
 		@session_id = params[:session_id]
 		if @session_id.nil?

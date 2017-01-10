@@ -1,5 +1,5 @@
-class BoardController < ApplicationController
-	before_action :authenticate_user!, :redirect_members
+class BoardController < BaseController
+	before_action :redirect_members
 	def index
 		@sessions = Session.where("user_to_id = ?", Constants::BROADCAST_USER).order(:created_at)
 	end
