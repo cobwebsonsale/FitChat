@@ -35,7 +35,7 @@
     <%= link_to 'Home', root_url %> | 
     <% if current_user.is_member %>
         <% unless current_user.has_active_session %>
-            <%= link_to 'New Chat', chat_create_index_path %>
+            <%= link_to 'New Chat', new_message_path %>
         <% else %>
             <%= link_to 'Active Chat', chat_active_index_path %>
         <% end %>

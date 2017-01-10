@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   	resources :board
+  	resources :messages
   	namespace :chat do
-  		resources :active, :inactive, :create
+  		resources :active, :inactive
   	end
 
   	root 'site#index'

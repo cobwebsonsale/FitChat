@@ -1,25 +1,40 @@
-<table id="table_board">
+<h1>Member requests</h1>
+<% unless @sessions.nil? or @sessions.count == 0%>
+<table>
     <thead>
         <tr>
-            <th>Username</th>
-            <th>Query</th>
-            <th>Reply</th>
+            <th>Messages</th>
+            <th>Last Update</th>
+            <th>Options</th>
         </tr>
     </thead>
 
     <tbody>
-        <% unless @queries.nil? or @queries.count == 0%>
-            <% @queries.each do |query| %>
-                <tr>
-                    <td><%= query.email %></td>
-                    <td><%= query.username %></td>
-                    <td><%= query.user_type %></td>
-                </tr>
-            <% end %>
-        <% else %>
+      
+        <% @sessions.each do |session| %>
             <tr>
-                <td colspan=3 >No queries for you at the moment</td>
+                <td>
+                    <% session.messages.each do |message| %>
+                        <div class="name"><%= message.author %>:</div>
+                        <%= message.text %> </br> </br>
+                    <% end %>
+                </td>
+                <td><%= session.updated_at %></td>
+                <td><%= link_to 'Respond', new_message_path(:session_id => session.id) %></td>
             </tr>
         <% end %>
+
+      
     </tbody>
 </table>
+<% else %>
+    <fieldset>
+        No queries for you at the moment</br>
+    </fieldset>
+<% end %>
+
+</br>
+<div class="links">
+    <%= link_to 'Home', root_url %> |
+    <%= link_to 'Active Chats', chat_active_index_path %>
+</div>

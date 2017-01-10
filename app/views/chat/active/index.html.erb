@@ -20,8 +20,8 @@
                     <% end %>
                 </td>
                 <td><%= session.updated_at %></td>
-                <td><%= link_to 'Respond', chat_create_index_path(session) %></td>
-                <td><%= link_to 'Terminate', chat_create_index_path(session) %></td>
+                <td><%= link_to 'Respond', new_message_path(:session_id => session.id) %></td>
+                <td><%= link_to 'Terminate', edit_chat_active_path(:id => session.id) %></td>
             </tr>
         <% end %>
       
@@ -35,5 +35,6 @@
 
 </br>
 <div class="links">
-    <%= link_to 'Home', root_url %>
+    <%= link_to 'Home', root_url %> |
+    <%= link_to "Inactive Chats", chat_inactive_index_path %>
 </div>

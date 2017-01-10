@@ -1,7 +1,7 @@
 class BoardController < ApplicationController
 	before_action :authenticate_user!, :redirect_members
 	def index
-		@queries = Session.where("user_id_to = ?", Constants::BROADCAST_USER).order(:created_at)
+		@sessions = Session.where("user_to_id = ?", Constants::BROADCAST_USER).order(:created_at)
 	end
 
 	private
