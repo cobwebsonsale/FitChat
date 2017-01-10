@@ -1,0 +1,25 @@
+<table id="table_board">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Query</th>
+            <th>Reply</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% unless @queries.nil? or @queries.count == 0%>
+            <% @queries.each do |query| %>
+                <tr>
+                    <td><%= query.email %></td>
+                    <td><%= query.username %></td>
+                    <td><%= query.user_type %></td>
+                </tr>
+            <% end %>
+        <% else %>
+            <tr>
+                <td colspan=3 >No queries for you at the moment</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

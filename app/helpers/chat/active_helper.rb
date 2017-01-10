@@ -1,0 +1,2 @@
+module Chat::ActiveHelper
+end

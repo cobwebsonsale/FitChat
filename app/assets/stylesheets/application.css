@@ -12,4 +12,57 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
  */
+require foundation_and_overrides
+
+P { text-align: left }
+P.notice{
+	margin-left: auto;
+    margin-right: auto;
+    width: 40em
+}
+P.alert {
+	margin-left: auto;
+    margin-right: auto;
+    width: 40em
+}
+div.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40em
+}
+div.form-inputs {
+	margin-left: auto;
+    margin-right: auto;
+    width: 40em
+}
+div.inline {
+	display: inline-block;
+}
+div.form-actions {
+	margin-left: auto;
+    margin-right: auto;
+    width: 40em
+}
+div.links {
+	margin-left: auto;
+    margin-right: auto;
+    width: 40em
+}
+div.name {
+    font-weight: bold;
+}
+FIELDSET {
+	margin-left: auto;
+	margin-right: auto;
+	width: 45em
+}
+TABLE {
+    margin-left: auto;
+    margin-right: auto;
+    width: 45em
+}
+
+H1 { text-align: center } 
+H2 { text-align: center } 

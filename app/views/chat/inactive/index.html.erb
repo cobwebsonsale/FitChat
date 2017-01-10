@@ -1,0 +1,45 @@
+<h1>Inactive chats</h1>
+<% unless @sessions.nil? or @sessions.count == 0%>
+<table>
+    <thead>
+        <tr>
+            <th>Messages</th>
+            <th>Last Update</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      
+        <% @sessions.each do |session| %>
+            <tr>
+                <td>
+                    <% session.messages.each do |message| %>
+                        <div class="name"><%= message.author %>:</div>
+                        <%= message.text %> </br> </br>
+                    <% end %>
+                </td>
+                <td><%= session.updated_at %></td>
+            </tr>
+        <% end %>
+      
+    </tbody>
+</table>
+<% else %>
+    <fieldset>
+        You don't have any past chats.</br>
+    </fieldset>
+<% end %>
+
+</br>
+<div class="links">
+    <%= link_to 'Home', root_url %> | 
+    <% if current_user.is_member %>
+        <% unless current_user.has_active_session %>
+            <%= link_to 'New Chat', chat_create_index_path %>
+        <% else %>
+            <%= link_to 'Active Chat', chat_active_index_path %>
+        <% end %>
+    <% elsif current_user.is_trainer %>
+        <%= link_to 'Active Chats', chat_active_index_path %>
+    <% end %>
+</div>

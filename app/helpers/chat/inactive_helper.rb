@@ -1,0 +1,2 @@
+module Chat::InactiveHelper
+end

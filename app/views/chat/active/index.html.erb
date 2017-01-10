@@ -1,0 +1,39 @@
+<h1>Active chats</h1>
+<% unless @sessions.nil? or @sessions.count == 0%>
+<table>
+    <thead>
+        <tr>
+            <th>Messages</th>
+            <th>Last Update</th>
+            <th colspan=2>Options</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      
+        <% @sessions.each do |session| %>
+            <tr>
+                <td>
+                    <% session.messages.each do |message| %>
+                        <div class="name"><%= message.author %>:</div>
+                        <%= message.text %> </br> </br>
+                    <% end %>
+                </td>
+                <td><%= session.updated_at %></td>
+                <td><%= link_to 'Respond', chat_create_index_path(session) %></td>
+                <td><%= link_to 'Terminate', chat_create_index_path(session) %></td>
+            </tr>
+        <% end %>
+      
+    </tbody>
+</table>
+<% else %>
+    <fieldset>
+        No active chats at the moment.</br>
+    </fieldset>
+<% end %>
+
+</br>
+<div class="links">
+    <%= link_to 'Home', root_url %>
+</div>
