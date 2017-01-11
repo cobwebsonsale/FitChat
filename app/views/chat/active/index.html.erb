@@ -1,4 +1,41 @@
+<script type="text/javascript">
+    $(function() {
+    $('#member_name').autocomplete({
+            minLength: 2,
+            source: '<%= users_path(:json) %>',
+            focus: function(event, ui) {
+                $('#member_name').val(ui.item.username);
+                return false;
+            },
+            select: function(event, ui) {
+                $('#member_name').val(ui.item.username);
+                $('#member_id').val(ui.item.id);
+                return false;
+            }
+        })
+    .data("ui-autocomplete")._renderItem = function(ul, item) {
+            return $("<li>")
+            .data( "ui-autocomplete-item", item )
+                .append("<a>" + item.username + "</a>")
+                .appendTo(ul);
+        };
+    });
+    </script>
+
+
+
 <h1>Active chats</h1>
+<% if current_user.is_trainer %>
+<div class="form-inputs">
+    <%= form_tag(chat_active_index_path, :method => 'get') do %>
+    <%= text_field_tag :member_name, 'Search for a member' %>
+    <%= hidden_field_tag :member_id %>
+    <%= submit_tag 'Go', class:'button' %>
+    <%= link_to 'Show all', chat_active_index_path %>
+    <% end %>
+</br>
+</div>
+<% end %>
 <% unless @sessions.nil? or @sessions.count == 0%>
 <table>
     <thead>

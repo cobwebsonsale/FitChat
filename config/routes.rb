@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   	namespace :chat do
   		resources :active, :inactive
   	end
+  	resources :users
 
   	root 'site#index'
 end

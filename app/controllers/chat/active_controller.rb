@@ -3,7 +3,11 @@ class Chat::ActiveController < BaseController
 		if current_user.is_member
 			@sessions = Session.where("status = ? and user_from_id = ?", Constants::SESSION_STATUS_OPEN, current_user.id).order(updated_at: :desc)
 		elsif current_user.is_trainer
-			@sessions = Session.where("status = ? and user_to_id = ?", Constants::SESSION_STATUS_OPEN, current_user.id).order(updated_at: :desc)
+			if params[:member_id] or params[:member_name]
+				@sessions = Session.where("status = ? and user_to_id = ? and user_from_id = ?", Constants::SESSION_STATUS_OPEN, current_user.id, params[:member_id]).order(updated_at: :desc)
+			else
+				@sessions = Session.where("status = ? and user_to_id = ?", Constants::SESSION_STATUS_OPEN, current_user.id).order(updated_at: :desc)
+			end
 		end
 	end
 
